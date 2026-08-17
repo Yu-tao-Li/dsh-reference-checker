@@ -50,7 +50,7 @@ gh repo edit Yu-tao-Li/dsh-refcheck --add-topic dsh-plugin
 # 在 lib 包目录打 tgz，挂到 Release
 cd dsh-refcheck
 npm pack   # → dsh-refcheck-1.0.2.tgz
-gh release create v1.0.2 ..\..\dist\dsh-refcheck-1.0.2.tgz --title "dsh-refcheck v1.0.2"
+gh release create v1.0.2 ..\dist\dsh-refcheck-1.0.2.tgz --title "dsh-refcheck v1.0.2"
 ```
 
 收录条目可加：
