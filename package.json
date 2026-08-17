@@ -1,0 +1,35 @@
+{
+	"name": "dsh-refcheck",
+	"version": "1.0.1",
+	"description": "DeepSeek Harness Cordis plugin: the refcheck_check model tool — verifies a paper's references against Crossref / OpenAlex / arXiv (any input style: plain lines, APA, GB/T 7714, IEEE, MLA, Vancouver, Chicago, Harvard, ACS, BibTeX, .pdf/.bib/.tex/.txt files) and emits corrected citations in the detected style.",
+	"type": "module",
+	"exports": {
+		".": "./lib/host.mjs",
+		"./package.json": "./package.json"
+	},
+	"dsh": {
+		"bundle": {
+			"patch": "./cordis.patch.yml"
+		}
+	},
+	"files": [
+		"cordis.patch.yml",
+		"lib",
+		"README.md"
+	],
+	"dependencies": {
+		"pdf-parse": "^2.4.5"
+	},
+	"keywords": [
+		"deepseek-harness",
+		"dsh",
+		"cordis",
+		"plugin",
+		"references",
+		"bibliography",
+		"verification",
+		"crossref",
+		"openalex"
+	],
+	"license": "MIT"
+}
