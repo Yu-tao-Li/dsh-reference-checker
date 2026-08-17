@@ -37,6 +37,21 @@ for (const f of ['apa', 'gb', 'ieee', 'vancouver', 'mla', 'chicago', 'harvard', 
 	console.log(`  [${f}] ${rc.formatCitation(rec, f, 1).replace(/\n/g, ' ')}`);
 }
 
+// regression: multi-word given name ("Aidan N. Gomez") must split with the
+// LAST token as family → "Gomez, A. N." (APA) / "Gomez AN" (GB), not "N. Gomez, A."
+const mwRec = {
+	title: 'Attention Is All You Need', year: 2017, venue: 'NeurIPS',
+	authorsList: [{ name: 'Aidan N. Gomez' }, { name: 'Ashish Vaswani' }],
+};
+const mwApa = rc.formatCitation(mwRec, 'apa', 1);
+const mwGb = rc.formatCitation(mwRec, 'gb', 1);
+const mwIeee = rc.formatCitation(mwRec, 'ieee', 3);
+const mwOk = mwApa.includes('Gomez, A. N.') && mwApa.includes('Vaswani, A.') && mwGb.includes('Gomez AN') && !mwIeee.includes(', ,');
+if (!mwOk) offlineFail++;
+console.log(`multi-word given ${mwOk ? 'OK ' : 'FAIL'} apa="${mwApa}"`);
+console.log(`  gb="${mwGb}"`);
+console.log(`  ieee="${mwIeee}"`);
+
 // Title guesses per style
 const titleCases = [
 	['娣卞害娈嬪樊瀛︿範鐢ㄤ簬鍥惧儚璇嗗埆', '浣曟伜鏄? 寮犵ゥ闆? 浠诲皯鍗? 瀛欏墤. 娣卞害娈嬪樊瀛︿範鐢ㄤ簬鍥惧儚璇嗗埆[J]. 璁＄畻鏈哄鎶? 2016, 39(4): 771-785.'],
