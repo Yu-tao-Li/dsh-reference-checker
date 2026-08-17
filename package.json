@@ -1,7 +1,7 @@
 {
 	"name": "dsh-refcheck",
-	"version": "1.0.1",
-	"description": "DeepSeek Harness Cordis plugin: the refcheck_check model tool — verifies a paper's references against Crossref / OpenAlex / arXiv (any input style: plain lines, APA, GB/T 7714, IEEE, MLA, Vancouver, Chicago, Harvard, ACS, BibTeX, .pdf/.bib/.tex/.txt files) and emits corrected citations in the detected style.",
+	"version": "1.0.2",
+	"description": "Reference verification for DeepSeek Harness: the refcheck_check model tool checks a paper's bibliography (.pdf/.bib/.tex/.txt/.md or pasted text) against Crossref, OpenAlex and arXiv, reports found/partial/not_found/error per entry, and emits corrected citations in the input's style (APA, GB/T 7714, IEEE, Vancouver, MLA, Chicago, Harvard, ACS, BibTeX).",
 	"type": "module",
 	"exports": {
 		".": "./lib/host.mjs",
@@ -15,21 +15,41 @@
 	"files": [
 		"cordis.patch.yml",
 		"lib",
-		"README.md"
+		"README.md",
+		"README.en.md",
+		"LICENSE"
 	],
+	"scripts": {
+		"test:smoke": "node test-smoke.mjs",
+		"test:e2e": "node test-e2e.mjs"
+	},
 	"dependencies": {
 		"pdf-parse": "^2.4.5"
 	},
 	"keywords": [
 		"deepseek-harness",
 		"dsh",
+		"dsh-plugin",
 		"cordis",
 		"plugin",
 		"references",
 		"bibliography",
 		"verification",
 		"crossref",
-		"openalex"
+		"openalex",
+		"arxiv"
 	],
+	"author": "Yu-tao-Li",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Yu-tao-Li/dsh-refcheck.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Yu-tao-Li/dsh-refcheck/issues"
+	},
+	"homepage": "https://github.com/Yu-tao-Li/dsh-refcheck#readme",
+	"engines": {
+		"node": ">=22"
+	},
 	"license": "MIT"
 }
