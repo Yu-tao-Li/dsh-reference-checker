@@ -1,0 +1,39 @@
+{
+  "header": "refcheck 检查报告（示例输出）",
+  "subtitle": "refcheck_check · 文件 paper.pdf · 自动定位 References 章节 · 共 8 条（Crossref + OpenAlex + arXiv）",
+  "summaryLabel": "判定汇总",
+  "chipFound": "✓ found 7",
+  "chipPartial": "! partial 0",
+  "chipNot": "✕ not_found 1",
+  "chipGlyphFound": "✓",
+  "chipGlyphNot": "✕",
+  "rows": [
+    {
+      "n": 1,
+      "status": "found",
+      "ref": "Vaswani, A., Shazeer, N., Parmar, N., ... Gomez, A. N., ... (2017). Attention is all you need. NeurIPS, 30.",
+      "best": "Attention Is All You Need — 2017 — arXiv preprint — arxiv.org/abs/1706.03762"
+    },
+    {
+      "n": 2,
+      "status": "found",
+      "ref": "VASWANI A, SHAZEE N, PARMAR N, et al. Attention is all you need[J]. Neural Inf. Process. Syst., 2017, 30.",
+      "best": "Attention Is All You Need — 2017 — arXiv preprint（样式：GB/T 7714）"
+    },
+    {
+      "n": 7,
+      "status": "found",
+      "ref": "He, K. et al. (2016) Deep residual learning for image recognition. In CVPR.",
+      "best": "Deep Residual Learning for Image Recognition — 2016 — CVPR — doi:10.1109/CVPR.2016.90"
+    },
+    {
+      "n": 8,
+      "status": "not_found",
+      "ref": "Doe, J. (2099) Quantum Flux Capacitators in Wireless Batteries. Journal of Fake Science, 42(1), 1-99.",
+      "best": "三个数据源均无接近记录 → 最近候选年份差 75 年，请人工核对"
+    }
+  ],
+  "correctedLabel": "建议更正版（检出格式：APA，编号对应上表，可直接替换回论文）",
+  "corrected": "1. Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, L., & Polosukhin, I. (2017). Attention Is All You Need. arXiv preprint. https://arxiv.org/abs/1706.03762v7",
+  "footer": "注意：not_found ≠ 造假——未被 Crossref / OpenAlex / arXiv 收录的出版物（老期刊、内部报告、部分中文期刊）同样查不到，请人工点开 DOI/链接核对。"
+}
