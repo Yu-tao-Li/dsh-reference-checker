@@ -4,8 +4,11 @@
 
 [![CI](https://github.com/Yu-tao-Li/dsh-refcheck/actions/workflows/ci.yml/badge.svg)](https://github.com/Yu-tao-Li/dsh-refcheck/actions/workflows/ci.yml)
 [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![version](https://img.shields.io/github/v/release/Yu-tao-Li/dsh-refcheck?label=version)](https://github.com/Yu-tao-Li/dsh-refcheck/releases)
 ![runtime](https://img.shields.io/badge/runtime-Node%20%3E%3D22-6EA632)
 [![stars](https://img.shields.io/github/stars/Yu-tao-Li/dsh-refcheck?style=social)](https://github.com/Yu-tao-Li/dsh-refcheck)
+
+[![Awesome DSH Plugin](https://awesome-dsh-plugin.com/badge.svg)](https://awesome-dsh-plugin.com)
 
 **给 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 装上参考文献真实性检查能力**——一个模型工具 `refcheck_check`，把一篇论文（`.pdf` / `.bib` / `.tex` / `.txt` / `.md`）或一段粘贴的文献列表逐条对照 **Crossref / OpenAlex / arXiv** 三个公开书目索引核对，逐条判定 `found` / `partial` / `not_found` / `error`，并**按输入样式**（APA、GB/T 7714、IEEE、Vancouver、MLA、Chicago、Harvard、ACS + BibTeX）生成可直接替换回论文的**更正版引用**。
 

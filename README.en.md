@@ -4,8 +4,11 @@
 
 [![CI](https://github.com/Yu-tao-Li/dsh-refcheck/actions/workflows/ci.yml/badge.svg)](https://github.com/Yu-tao-Li/dsh-refcheck/actions/workflows/ci.yml)
 [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![version](https://img.shields.io/github/v/release/Yu-tao-Li/dsh-refcheck?label=version)](https://github.com/Yu-tao-Li/dsh-refcheck/releases)
 ![runtime](https://img.shields.io/badge/runtime-Node%20%3E%3D22-6EA632)
 [![stars](https://img.shields.io/github/stars/Yu-tao-Li/dsh-refcheck?style=social)](https://github.com/Yu-tao-Li/dsh-refcheck)
+
+[![Awesome DSH Plugin](https://awesome-dsh-plugin.com/badge.svg)](https://awesome-dsh-plugin.com)
 
 **Reference-verification for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)** — one model tool, `refcheck_check`, that takes a paper (`.pdf` / `.bib` / `.tex` / `.txt` / `.md`) or a pasted reference list and verifies every entry against **Crossref / OpenAlex / arXiv**. Each reference gets a verdict (`found` / `partial` / `not_found` / `error`), the closest real record (title, year, venue, volume, pages, DOI/URL), and a **corrected citation in the input's own style** (APA, GB/T 7714, IEEE, Vancouver, MLA, Chicago, Harvard, ACS, or BibTeX) — ready to paste back into the paper.
 
