@@ -1,12 +1,12 @@
 [中文](README.md)
 
-# dsh-refcheck
+# dsh-reference-checker (Reference Verification · 参考文献真实性检查器)
 
-[![CI](https://github.com/Yu-tao-Li/dsh-refcheck/actions/workflows/ci.yml/badge.svg)](https://github.com/Yu-tao-Li/dsh-refcheck/actions/workflows/ci.yml)
+[![CI](https://github.com/Yu-tao-Li/dsh-reference-checker/actions/workflows/ci.yml/badge.svg)](https://github.com/Yu-tao-Li/dsh-reference-checker/actions/workflows/ci.yml)
 [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[![version](https://img.shields.io/github/v/release/Yu-tao-Li/dsh-refcheck?label=version)](https://github.com/Yu-tao-Li/dsh-refcheck/releases)
+[![version](https://img.shields.io/github/v/release/Yu-tao-Li/dsh-reference-checker?label=version)](https://github.com/Yu-tao-Li/dsh-reference-checker/releases)
 ![runtime](https://img.shields.io/badge/runtime-Node%20%3E%3D22-6EA632)
-[![stars](https://img.shields.io/github/stars/Yu-tao-Li/dsh-refcheck?style=social)](https://github.com/Yu-tao-Li/dsh-refcheck)
+[![stars](https://img.shields.io/github/stars/Yu-tao-Li/dsh-reference-checker?style=social)](https://github.com/Yu-tao-Li/dsh-reference-checker)
 
 [![Awesome DSH Plugin](https://awesome-dsh-plugin.com/badge.svg)](https://awesome-dsh-plugin.com)
 
@@ -16,7 +16,7 @@ Host-only plugin (no browser UI, no services); the single runtime dependency is 
 
 | ① Sample report: mixed-style input, per-entry verdicts + corrected citations (actual output style) |
 |---|
-| ![refcheck sample report](assets/screenshot-1.png) |
+| ![dsh-reference-checker sample report](assets/screenshot-1.png) |
 
 ## Features
 
@@ -30,7 +30,7 @@ Host-only plugin (no browser UI, no services); the single runtime dependency is 
 
 ```sh
 # from GitHub (--profile selects the target profile)
-dsh plugin --profile web add github:Yu-tao-Li/dsh-refcheck
+dsh plugin --profile web add github:Yu-tao-Li/dsh-reference-checker
 ```
 
 Restart `dsh web` (or the dsh process); `refcheck_check` is then available in every session.

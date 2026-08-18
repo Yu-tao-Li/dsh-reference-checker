@@ -1,12 +1,12 @@
 [English](README.en.md)
 
-# dsh-refcheck
+# dsh-reference-checker（参考文献真实性检查器）
 
-[![CI](https://github.com/Yu-tao-Li/dsh-refcheck/actions/workflows/ci.yml/badge.svg)](https://github.com/Yu-tao-Li/dsh-refcheck/actions/workflows/ci.yml)
+[![CI](https://github.com/Yu-tao-Li/dsh-reference-checker/actions/workflows/ci.yml/badge.svg)](https://github.com/Yu-tao-Li/dsh-reference-checker/actions/workflows/ci.yml)
 [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[![version](https://img.shields.io/github/v/release/Yu-tao-Li/dsh-refcheck?label=version)](https://github.com/Yu-tao-Li/dsh-refcheck/releases)
+[![version](https://img.shields.io/github/v/release/Yu-tao-Li/dsh-reference-checker?label=version)](https://github.com/Yu-tao-Li/dsh-reference-checker/releases)
 ![runtime](https://img.shields.io/badge/runtime-Node%20%3E%3D22-6EA632)
-[![stars](https://img.shields.io/github/stars/Yu-tao-Li/dsh-refcheck?style=social)](https://github.com/Yu-tao-Li/dsh-refcheck)
+[![stars](https://img.shields.io/github/stars/Yu-tao-Li/dsh-reference-checker?style=social)](https://github.com/Yu-tao-Li/dsh-reference-checker)
 
 [![Awesome DSH Plugin](https://awesome-dsh-plugin.com/badge.svg)](https://awesome-dsh-plugin.com)
 
@@ -16,7 +16,7 @@
 
 | ① 示例报告：混合格式输入逐条判定 + 更正版引用（真实运行输出样式） |
 |---|
-| ![refcheck 示例报告](assets/screenshot-1.png) |
+| ![dsh-reference-checker 示例报告](assets/screenshot-1.png) |
 
 ## 特性
 
@@ -30,7 +30,7 @@
 
 ```sh
 # 从 GitHub（--profile 指定装进哪个 profile）
-dsh plugin --profile web add github:Yu-tao-Li/dsh-refcheck
+dsh plugin --profile web add github:Yu-tao-Li/dsh-reference-checker
 ```
 
 重启 `dsh web`（或重启 dsh 进程），`refcheck_check` 在所有会话可用。

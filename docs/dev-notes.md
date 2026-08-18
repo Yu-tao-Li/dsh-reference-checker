@@ -121,3 +121,4 @@ BibTeX 输入强制 `bibtex` 模板，key 沿用原条目的 key。
 | 1.0.0 | 首版：提取（PDF/bib/tex/text）+ 三源核对 + 8 样式更正版 |
 | 1.0.1 | 本地迭代修正（打包格式/文档） |
 | 1.0.2 | `splitName` 姓/名切分修正（多词名）；IEEE 模板残留逗号修正；e2e 增加回归断言 |
+| 1.1.0 | 改名 `dsh-refcheck` → `dsh-reference-checker`（全称 + 中文标题）；bundle id 与 User-Agent 同步更新 |

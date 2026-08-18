@@ -35,8 +35,9 @@
 
 ### 第 1 步：推 GitHub（✅ 已完成 2026-08-17）
 
-- 仓库：<https://github.com/Yu-tao-Li/dsh-refcheck>（public，创建时刻
-  `2026-08-17T18:04:35Z`，13 个提交，CI 全绿）
+- 仓库：<https://github.com/Yu-tao-Li/dsh-reference-checker>（public，创建时刻
+  `2026-08-17T18:04:35Z`；原仓库名 `dsh-refcheck`，2026-08-18 改为全称
+  `dsh-reference-checker`，旧 URL 自动重定向）
 - topic `dsh-plugin` 已添加
 - 创建/推送命令（留档）：
 
@@ -48,6 +49,8 @@ gh repo edit Yu-tao-Li/dsh-refcheck --add-topic dsh-plugin
 ### 第 2 步：GitHub Release（✅ 已完成 2026-08-17）
 
 - Release **v1.0.2** 已发布，挂 `dsh-refcheck-1.0.2.tgz`（25227 字节）
+- 改名后（2026-08-18）发布 **v1.1.0**，挂 `dsh-reference-checker-1.1.0.tgz`
+  （包名/仓库名/标题改为全称 + 中文标题）
 - 收录条目已加 `tarball:` 字段（见 `publish/awesome-list-entry.yml`），
   商城将优先展示预构建包，安装免 `allowBuilds` 构建授权
 
@@ -71,17 +74,17 @@ git clone https://github.com/awesome-dsh-plugin/awesome-dsh-plugin
 cd awesome-dsh-plugin
 # 1) 收录条目（内容见本仓库 publish/awesome-list-entry.yml）
 mkdir -p data/plugins
-cp <本仓库>/publish/awesome-list-entry.yml data/plugins/Yu-tao-Li__dsh-refcheck.yml
+cp <本仓库>/publish/awesome-list-entry.yml data/plugins/Yu-tao-Li__dsh-reference-checker.yml
 # 2)（可选）截图：把 publish/screenshots.json 的内容合并进 data/screenshots.json
 # 3) 重新生成 README（必须，CI 会校验）
 npm ci
 node scripts/generate-readme.mjs
 # 4) 提交 + 推送 + 开 PR
-git add data/plugins/Yu-tao-Li__dsh-refcheck.yml data/screenshots.json README.md README.zh.md
-git commit -m "Add Yu-tao-Li/dsh-refcheck"
+git add data/plugins/Yu-tao-Li__dsh-reference-checker.yml data/screenshots.json README.md README.zh.md
+git commit -m "Add Yu-tao-Li/dsh-reference-checker"
 git push origin HEAD
 gh pr create --repo awesome-dsh-plugin/awesome-dsh-plugin \
-  --title "Add Yu-tao-Li/dsh-refcheck" \
+  --title "Add Yu-tao-Li/dsh-reference-checker" \
   --body "Reference verification for DSH: per-entry Crossref/OpenAlex/arXiv checks with corrected citations in the input's style."
 ```
 
@@ -96,13 +99,13 @@ gh pr create --repo awesome-dsh-plugin/awesome-dsh-plugin \
 网站与 dshmarket 自动重建，插件即上架。用户侧：
 
 ```powershell
-dsh plugin --profile web add github:Yu-tao-Li/dsh-refcheck
-# 或在 DSH 设置里的插件市场（dshmarket）搜索 "dsh-refcheck" 一键安装
+dsh plugin --profile web add github:Yu-tao-Li/dsh-reference-checker
+# 或在 DSH 设置里的插件市场（dshmarket）搜索 "dsh-reference-checker" 一键安装
 ```
 
 ### 可选加分项
 
-- **npm 发布**：`npm publish`（包名 `dsh-refcheck` 发布前需
+- **npm 发布**：`npm publish`（包名 `dsh-reference-checker` 发布前需
   `npm whoami` 确认账号与名字占用情况；发布后条目 `npm:` 字段自动生效，
   安装免构建授权）。
 - **徽章**：README 双语版已提前加上

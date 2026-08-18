@@ -21,7 +21,7 @@
 - **OpenAlex** — https://api.openalex.org（开放学术索引）
 - **arXiv** — https://export.arxiv.org（预印本检索 API）
 
-查询仅用标准 GET 请求，带标识性 `User-Agent`（`dsh-refcheck/<ver>`），
+查询仅用标准 GET 请求，带标识性 `User-Agent`（`dsh-reference-checker/<ver>`），
 遵守各服务的限流（429 自动重试一次，并发上限 4）。
 
 ## 致谢（仅思想层面）
