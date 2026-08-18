@@ -1,7 +1,7 @@
 {
-	"name": "dsh-refcheck",
-	"version": "1.0.2",
-	"description": "Reference verification for DeepSeek Harness: the refcheck_check model tool checks a paper's bibliography (.pdf/.bib/.tex/.txt/.md or pasted text) against Crossref, OpenAlex and arXiv, reports found/partial/not_found/error per entry, and emits corrected citations in the input's style (APA, GB/T 7714, IEEE, Vancouver, MLA, Chicago, Harvard, ACS, BibTeX).",
+	"name": "dsh-reference-checker",
+	"version": "1.1.0",
+	"description": "Reference verification for DeepSeek Harness (参考文献真实性检查器): the refcheck_check model tool checks a paper's bibliography (.pdf/.bib/.tex/.txt/.md or pasted text) against Crossref, OpenAlex and arXiv, reports found/partial/not_found/error per entry, and emits corrected citations in the input's style (APA, GB/T 7714, IEEE, Vancouver, MLA, Chicago, Harvard, ACS, BibTeX).",
 	"type": "module",
 	"exports": {
 		".": "./lib/host.mjs",
@@ -33,6 +33,7 @@
 		"cordis",
 		"plugin",
 		"references",
+		"refcheck",
 		"bibliography",
 		"verification",
 		"crossref",
@@ -42,12 +43,12 @@
 	"author": "Yu-tao-Li",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Yu-tao-Li/dsh-refcheck.git"
+		"url": "git+https://github.com/Yu-tao-Li/dsh-reference-checker.git"
 	},
 	"bugs": {
-		"url": "https://github.com/Yu-tao-Li/dsh-refcheck/issues"
+		"url": "https://github.com/Yu-tao-Li/dsh-reference-checker/issues"
 	},
-	"homepage": "https://github.com/Yu-tao-Li/dsh-refcheck#readme",
+	"homepage": "https://github.com/Yu-tao-Li/dsh-reference-checker#readme",
 	"engines": {
 		"node": ">=22"
 	},
