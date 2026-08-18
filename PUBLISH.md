@@ -50,7 +50,9 @@ gh repo edit Yu-tao-Li/dsh-refcheck --add-topic dsh-plugin
 
 - Release **v1.0.2** 已发布，挂 `dsh-refcheck-1.0.2.tgz`（25227 字节）
 - 改名后（2026-08-18）发布 **v1.1.0**，挂 `dsh-reference-checker-1.1.0.tgz`
-  （包名/仓库名/标题改为全称 + 中文标题）
+  （同一改名变更合并发布：包/仓库 `dsh-refcheck` → `dsh-reference-checker`，
+  模型工具 `refcheck_check` → `reference_checker`，标题/描述/About 加中文；
+  中间曾误发的 v1.2.0 已删除，版本线保持 1.0.2 → 1.1.0）
 - 收录条目已加 `tarball:` 字段（见 `publish/awesome-list-entry.yml`），
   商城将优先展示预构建包，安装免 `allowBuilds` 构建授权
 
