@@ -33,9 +33,10 @@
 
 ## 步骤留档
 
-### 第 1 步：推 GitHub
+### 第 1 步：推 GitHub（✅ 已完成 2026-08-17）
 
-- 仓库：<https://github.com/Yu-tao-Li/dsh-refcheck>（public）
+- 仓库：<https://github.com/Yu-tao-Li/dsh-refcheck>（public，创建时刻
+  `2026-08-17T18:04:35Z`，13 个提交，CI 全绿）
 - topic `dsh-plugin` 已添加
 - 创建/推送命令（留档）：
 
@@ -44,24 +45,24 @@ gh repo create dsh-refcheck --public --source . --push
 gh repo edit Yu-tao-Li/dsh-refcheck --add-topic dsh-plugin
 ```
 
-### 第 2 步：GitHub Release（预构建 tarball，安装免构建授权）
+### 第 2 步：GitHub Release（✅ 已完成 2026-08-17）
+
+- Release **v1.0.2** 已发布，挂 `dsh-refcheck-1.0.2.tgz`（25227 字节）
+- 收录条目已加 `tarball:` 字段（见 `publish/awesome-list-entry.yml`），
+  商城将优先展示预构建包，安装免 `allowBuilds` 构建授权
 
 ```powershell
-# 在 lib 包目录打 tgz，挂到 Release
+# 留档命令
 cd dsh-refcheck
 npm pack   # → dsh-refcheck-1.0.2.tgz
 gh release create v1.0.2 ..\dist\dsh-refcheck-1.0.2.tgz --title "dsh-refcheck v1.0.2"
 ```
 
-收录条目可加：
-
-```yaml
-tarball: https://github.com/Yu-tao-Li/dsh-refcheck/releases/latest/download/dsh-refcheck-1.0.2.tgz
-```
-
 ### 第 3 步：等够"仓库年龄"
 
-CI 要求仓库**创建满 1 天**。今天推、明天（或更晚）再提收录 PR，避免白跑 CI。
+CI 要求仓库**创建满 1 天**。仓库创建于 `2026-08-17T18:04:35Z`，
+**`2026-08-18T18:04Z`（UTC+8 即 2026-08-19 02:04）之后**再提收录 PR，
+避免白跑 CI。提交数 13 ≥ 10 ✅。
 
 ### 第 4 步：提收录 PR（满 1 天后）
 
@@ -104,8 +105,9 @@ dsh plugin --profile web add github:Yu-tao-Li/dsh-refcheck
 - **npm 发布**：`npm publish`（包名 `dsh-refcheck` 发布前需
   `npm whoami` 确认账号与名字占用情况；发布后条目 `npm:` 字段自动生效，
   安装免构建授权）。
-- **徽章**：上架后 README 双语版各加
-  `[![Awesome DSH Plugin](https://awesome-dsh-plugin.com/badge.svg)](https://awesome-dsh-plugin.com)`。
+- **徽章**：README 双语版已提前加上
+  `[![Awesome DSH Plugin](https://awesome-dsh-plugin.com/badge.svg)](https://awesome-dsh-plugin.com)`
+  （与 computer-use 仓库版式一致；上架后自然生效）。
 
 ## 安全提醒
 
