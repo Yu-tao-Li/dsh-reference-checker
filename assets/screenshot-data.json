@@ -1,6 +1,6 @@
 {
-  "header": "refcheck 检查报告（示例输出）",
-  "subtitle": "refcheck_check · 文件 paper.pdf · 自动定位 References 章节 · 共 8 条（Crossref + OpenAlex + arXiv）",
+  "header": "reference_check 检查报告（示例输出）",
+  "subtitle": "reference_check · 文件 paper.pdf · 自动定位 References 章节 · 共 8 条（Crossref + OpenAlex + arXiv）",
   "summaryLabel": "判定汇总",
   "chipFound": "✓ found 7",
   "chipPartial": "! partial 0",

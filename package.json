@@ -1,7 +1,7 @@
 {
 	"name": "dsh-reference-checker",
-	"version": "1.1.0",
-	"description": "Reference verification for DeepSeek Harness (参考文献真实性检查器): the refcheck_check model tool checks a paper's bibliography (.pdf/.bib/.tex/.txt/.md or pasted text) against Crossref, OpenAlex and arXiv, reports found/partial/not_found/error per entry, and emits corrected citations in the input's style (APA, GB/T 7714, IEEE, Vancouver, MLA, Chicago, Harvard, ACS, BibTeX).",
+	"version": "1.2.0",
+	"description": "Reference verification for DeepSeek Harness (参考文献真实性检查器): the reference_check model tool checks a paper's bibliography (.pdf/.bib/.tex/.txt/.md or pasted text) against Crossref, OpenAlex and arXiv, reports found/partial/not_found/error per entry, and emits corrected citations in the input's style (APA, GB/T 7714, IEEE, Vancouver, MLA, Chicago, Harvard, ACS, BibTeX).",
 	"type": "module",
 	"exports": {
 		".": "./lib/host.mjs",

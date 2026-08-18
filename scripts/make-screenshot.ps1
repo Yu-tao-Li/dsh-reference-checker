@@ -1,4 +1,4 @@
-# Renders assets/screenshot-1.png — a clean sample of the refcheck_check
+# Renders assets/screenshot-1.png — a clean sample of the reference_check
 # report (what the agent shows the user after a run).
 #
 # Regenerate with (Windows PowerShell 5.1 or pwsh):

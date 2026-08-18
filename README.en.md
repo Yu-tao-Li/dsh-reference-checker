@@ -10,7 +10,7 @@
 
 [![Awesome DSH Plugin](https://awesome-dsh-plugin.com/badge.svg)](https://awesome-dsh-plugin.com)
 
-**Reference-verification for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)** — one model tool, `refcheck_check`, that takes a paper (`.pdf` / `.bib` / `.tex` / `.txt` / `.md`) or a pasted reference list and verifies every entry against **Crossref / OpenAlex / arXiv**. Each reference gets a verdict (`found` / `partial` / `not_found` / `error`), the closest real record (title, year, venue, volume, pages, DOI/URL), and a **corrected citation in the input's own style** (APA, GB/T 7714, IEEE, Vancouver, MLA, Chicago, Harvard, ACS, or BibTeX) — ready to paste back into the paper.
+**Reference-verification for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)** — one model tool, `reference_check`, that takes a paper (`.pdf` / `.bib` / `.tex` / `.txt` / `.md`) or a pasted reference list and verifies every entry against **Crossref / OpenAlex / arXiv**. Each reference gets a verdict (`found` / `partial` / `not_found` / `error`), the closest real record (title, year, venue, volume, pages, DOI/URL), and a **corrected citation in the input's own style** (APA, GB/T 7714, IEEE, Vancouver, MLA, Chicago, Harvard, ACS, or BibTeX) — ready to paste back into the paper.
 
 Host-only plugin (no browser UI, no services); the single runtime dependency is `pdf-parse` (PDF text-layer extraction).
 
@@ -33,7 +33,7 @@ Host-only plugin (no browser UI, no services); the single runtime dependency is 
 dsh plugin --profile web add github:Yu-tao-Li/dsh-reference-checker
 ```
 
-Restart `dsh web` (or the dsh process); `refcheck_check` is then available in every session.
+Restart `dsh web` (or the dsh process); `reference_check` is then available in every session.
 
 > The bundle resolves by package name (`cordis.patch.yml` is a single mount line), so it installs into any profile / `$DSH_HOME` — no hardcoded paths.
 
@@ -61,7 +61,7 @@ Every `found`/`partial` entry carries `best` (the closest real record: title / y
 ## How it works
 
 ```
-refcheck_check (model tool, in the DSH host process)
+reference_check (model tool, in the DSH host process)
    │
    ├─ extract   .pdf → pdf-parse text layer + References-section location
    │            .bib → brace-depth parser   .tex → thebibliography / \bibliography

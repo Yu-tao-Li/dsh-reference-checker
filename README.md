@@ -10,7 +10,7 @@
 
 [![Awesome DSH Plugin](https://awesome-dsh-plugin.com/badge.svg)](https://awesome-dsh-plugin.com)
 
-**给 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 装上参考文献真实性检查能力**——一个模型工具 `refcheck_check`，把一篇论文（`.pdf` / `.bib` / `.tex` / `.txt` / `.md`）或一段粘贴的文献列表逐条对照 **Crossref / OpenAlex / arXiv** 三个公开书目索引核对，逐条判定 `found` / `partial` / `not_found` / `error`，并**按输入样式**（APA、GB/T 7714、IEEE、Vancouver、MLA、Chicago、Harvard、ACS + BibTeX）生成可直接替换回论文的**更正版引用**。
+**给 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 装上参考文献真实性检查能力**——一个模型工具 `reference_check`，把一篇论文（`.pdf` / `.bib` / `.tex` / `.txt` / `.md`）或一段粘贴的文献列表逐条对照 **Crossref / OpenAlex / arXiv** 三个公开书目索引核对，逐条判定 `found` / `partial` / `not_found` / `error`，并**按输入样式**（APA、GB/T 7714、IEEE、Vancouver、MLA、Chicago、Harvard、ACS + BibTeX）生成可直接替换回论文的**更正版引用**。
 
 纯宿主端插件（host-only，无浏览器 UI、不碰你的文件除读取外）；唯一运行时依赖 `pdf-parse`（提取 PDF 文本层）。
 
@@ -33,7 +33,7 @@
 dsh plugin --profile web add github:Yu-tao-Li/dsh-reference-checker
 ```
 
-重启 `dsh web`（或重启 dsh 进程），`refcheck_check` 在所有会话可用。
+重启 `dsh web`（或重启 dsh 进程），`reference_check` 在所有会话可用。
 
 > bundle 按包名自解析（`cordis.patch.yml` 只有一行挂载），任何 profile / `$DSH_HOME` 都能装，无硬编码路径。
 
@@ -61,7 +61,7 @@ dsh plugin --profile web add github:Yu-tao-Li/dsh-reference-checker
 ## 工作原理
 
 ```
-refcheck_check（模型工具，宿主进程内）
+reference_check（模型工具，宿主进程内）
    │
    ├─ 提取  .pdf → pdf-parse 文本层 + References 章节定位
    │        .bib → 括号深度解析   .tex → thebibliography / \bibliography
