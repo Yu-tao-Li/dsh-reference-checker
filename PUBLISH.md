@@ -65,11 +65,18 @@ gh release create v1.0.2 ..\dist\dsh-refcheck-1.0.2.tgz --title "dsh-refcheck v1
 
 ### 第 3 步：等够"仓库年龄"
 
-CI 要求仓库**创建满 1 天**。仓库创建于 `2026-08-17T18:04:35Z`，
-**`2026-08-18T18:04Z`（UTC+8 即 2026-08-19 02:04）之后**再提收录 PR，
-避免白跑 CI。提交数 13 ≥ 10 ✅。
+CI 要求仓库**创建满 1 天**。仓库创建于 `2026-08-17T18:07:36Z`，
+`2026-08-18T18:07:36Z`（UTC+8 即 2026-08-19 02:07:36）后达标；
+提交数 ≥ 10 ✅。
 
-### 第 4 步：提收录 PR（满 1 天后）
+### 第 4 步：提收录 PR（✅ 已完成 2026-08-18）
+
+- PR：<https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/1918>
+- CI 全绿（Submission gate + check/lint/站点构建）
+- 待维护者评审合并；合并后网站与 dshmarket 自动重建
+
+<details><summary>操作步骤（留档）</summary>
+
 
 ```bash
 git clone https://github.com/awesome-dsh-plugin/awesome-dsh-plugin
@@ -89,6 +96,11 @@ gh pr create --repo awesome-dsh-plugin/awesome-dsh-plugin \
   --title "Add Yu-tao-Li/dsh-reference-checker" \
   --body "Reference verification for DSH: per-entry Crossref/OpenAlex/arXiv checks with corrected citations in the input's style."
 ```
+
+（实际执行：fork 推分支 `add-yu-tao-li-dsh-reference-checker` 后
+`--head Yu-tao-li:add-yu-tao-li-dsh-reference-checker` 开 PR。）
+
+</details>
 
 ### 第 5 步：CI 会检查什么（失败就在同一分支推修复）
 
