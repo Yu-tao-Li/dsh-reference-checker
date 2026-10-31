@@ -1,6 +1,7 @@
 // End-to-end test of the refcheck tool: multi-format parsing, corrected
 // citations, and live Crossref/OpenAlex/arXiv lookups. Run:  node e2e-test.mjs
 import * as rc from './lib/host.mjs';
+import assert from 'node:assert/strict';
 
 let toolDef;
 rc.apply({ tools: { register: (d) => { toolDef = d; } } });
@@ -69,6 +70,7 @@ for (const [want, line] of titleCases) {
 }
 
 // 鈹€鈹€ online: mixed-style input through the real tool 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+assert.equal(offlineFail, 0, 'offline style and title checks must pass');
 const controller = new AbortController();
 const result = await toolDef.execute(
 	{
@@ -78,7 +80,8 @@ const result = await toolDef.execute(
 			'[1] A. Vaswani, N. Shazeer, N. Parmar, et al., "Attention is all you need," in Advances in Neural Information Processing Systems, vol. 30, 2017.\n' +
 			'Vaswani, Ashish, Noam Shazeer, et al. 2017. "Attention Is All You Need." Advances in Neural Information Processing Systems 30.\n' +
 			"Vaswani, A. (2017) 'Attention is all you need'. Advances in Neural Information Processing Systems, 30.\n" +
-			'Vaswani A, Shazeer N, Parmar N, et al. Attention is all you need. Advances in Neural Information Processing Systems. 2017;30:5998-6008.\n' +
+			'Vaswani A, Shazeer N, Parmar N, et al. Attention is all you need. Advances in Neural Information Processing Systems, 2017, 30: 5998-6008.\n' +
+			'Zhang S, Li M, et al. Underwater basket weaving in the Qing dynasty. Journal of Nonexistent Studies, 2021, 5(2): 1-9.\n' +
 			'He, K. et al. (2016) Deep residual learning for image recognition. In CVPR.\n' +
 			'Doe, J. (2099) Quantum Flux Capacitators in Wireless Batteries. Journal of Fake Science, 42(1), 1-99.\n',
 	},
@@ -87,6 +90,20 @@ const result = await toolDef.execute(
 
 console.log('\n=== canonical result (must match RESULT_SCHEMA) ===');
 console.log(JSON.stringify(result, null, 2));
+assert.equal(result.total, 9, 'each pasted citation must remain separate');
+assert.equal(result.results.length, 9);
+for (const [i, entry] of result.results.entries()) {
+	assert.ok(entry.sources.some((source) => source.ok), `reference ${i + 1}: at least one live source must succeed`);
+	if (i === 6 || i === 8) {
+		assert.equal(entry.status, 'not_found', `invented reference ${i + 1}`);
+		assert.equal(entry.corrected, undefined);
+	} else {
+		assert.equal(entry.status, 'found', `real reference ${i + 1}`);
+		assert.match(entry.best.title, i === 7 ? /deep residual learning/i : /attention is all you need/i);
+		assert.ok(entry.corrected);
+	}
+}
+assert.equal(result.results[5].format, 'vancouver');
 console.log('\n=== rendered report ===');
 console.log(toolDef.output.render(null, result)[0].text);
 console.log(offlineFail === 0 ? '\nOFFLINE CHECKS PASSED' : `\nOFFLINE FAILURES: ${offlineFail}`);

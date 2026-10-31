@@ -1,6 +1,6 @@
 {
 	"name": "dsh-reference-checker",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "Reference verification for DeepSeek Harness (参考文献真实性检查器): the reference_checker model tool checks a paper's bibliography (.pdf/.bib/.tex/.txt/.md or pasted text) against Crossref, OpenAlex and arXiv, reports found/partial/not_found/error per entry, and emits corrected citations in the input's style (APA, GB/T 7714, IEEE, Vancouver, MLA, Chicago, Harvard, ACS, BibTeX).",
 	"type": "module",
 	"exports": {
@@ -14,12 +14,14 @@
 	},
 	"files": [
 		"cordis.patch.yml",
-		"lib",
+		"lib/host.mjs",
 		"README.md",
 		"README.en.md",
 		"LICENSE"
 	],
 	"scripts": {
+		"test": "node --test test-regression.mjs test-smoke.mjs",
+		"test:regression": "node --test test-regression.mjs",
 		"test:smoke": "node test-smoke.mjs",
 		"test:e2e": "node test-e2e.mjs"
 	},

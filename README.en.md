@@ -28,6 +28,9 @@ Host-only plugin (no browser UI, no services); the single runtime dependency is 
 
 ## Install
 
+npm package: [dsh-reference-checker](https://www.npmjs.com/package/dsh-reference-checker).
+Prebuilt packages: [GitHub Releases](https://github.com/Yu-tao-Li/dsh-reference-checker/releases).
+
 ```sh
 # from GitHub (--profile selects the target profile)
 dsh plugin --profile web add github:Yu-tao-Li/dsh-reference-checker
@@ -95,18 +98,27 @@ Design details (title-guessing heuristics, scoring math, pitfalls) are in [docs/
 ```
 lib/host.mjs                   the whole plugin: extraction + verification + styles (single-file ESM)
 test-smoke.mjs                 offline: minimal PDF generation → text extraction → 4 source parses
-test-e2e.mjs                   online: 8 mixed-style references against the real APIs + assertions
+test-regression.mjs            offline: tool schema, Vancouver parsing/titles, mocked lookups
+test-e2e.mjs                   online: 9 mixed-style references against the real APIs + assertions
 scripts/make-screenshot.ps1    regenerate the README sample screenshot (Windows PowerShell + GDI+)
 docs/dev-notes.md              design rationale, scoring math, pitfalls, version history
 ```
 
 ```sh
 npm install          # fetch pdf-parse
-node test-smoke.mjs  # offline
+npm test            # offline regressions + PDF smoke test
 node test-e2e.mjs    # online (needs internet access to the three indexes)
 ```
 
-CI (`.github/workflows/ci.yml`) runs the offline smoke test on `ubuntu-latest` for every push/PR; the online e2e is local-only (it depends on the public bibliographic APIs).
+CI (`.github/workflows/ci.yml`) runs offline regressions and PDF smoke tests on Linux / Windows with Node 22 / 24 for every push/PR; the online e2e is local-only (it depends on the public bibliographic APIs).
+
+## 1.1.1 fixes
+
+- Register tool parameters as an object JSON Schema, fixing model requests rejected with HTTP 400.
+- Split pasted Vancouver citations with comma-separated years and volumes, while retaining wrapped author lists.
+- Strip Vancouver author blocks before title queries and preserve periods inside abbreviations such as `et al.`, `e.g.`, `Jr.`, and `Fig.`.
+
+See [issue #1](https://github.com/Yu-tao-Li/dsh-reference-checker/issues/1).
 
 ## License
 

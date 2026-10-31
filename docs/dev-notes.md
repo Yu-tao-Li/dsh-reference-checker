@@ -118,6 +118,7 @@ BibTeX 输入强制 `bibtex` 模板，key 沿用原条目的 key。
 
 | 版本 | 变更 |
 |---|---|
+| 1.1.1 | 修复 issue #1：工具参数补齐 object JSON Schema；Vancouver 逗号式条目分条、跨行作者合并；plain/Vancouver 题名前剥作者块，缩写句点不作句末；新增离线和在线断言，CI 覆盖 Windows/Linux、Node 22/24；同步 lockfile 包名与版本 |
 | 1.0.0 | 首版：提取（PDF/bib/tex/text）+ 三源核对 + 8 样式更正版 |
 | 1.0.1 | 本地迭代修正（打包格式/文档） |
 | 1.0.2 | `splitName` 姓/名切分修正（多词名）；IEEE 模板残留逗号修正；e2e 增加回归断言 |

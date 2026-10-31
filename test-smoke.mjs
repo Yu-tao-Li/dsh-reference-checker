@@ -1,11 +1,21 @@
 ﻿// Smoke test for refcheck v2: minimal PDF generation + text extraction +
 // reference parsing. Run with:  node smoke-test.mjs
-import { writeFileSync, readFileSync, mkdirSync, rmSync } from 'node:fs';
+import { writeFileSync, mkdtempSync, rmSync } from 'node:fs';
+import assert from 'node:assert/strict';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { PDFParse } from 'pdf-parse';
 import * as rc from './lib/host.mjs';
 
-const tmp = '.smoke';
-mkdirSync(tmp, { recursive: true });
+let registeredTool;
+rc.apply({ tools: { register: (definition) => { registeredTool = definition; } } });
+assert.equal(registeredTool.name, 'reference_checker');
+assert.equal(registeredTool.parameters.type, 'object');
+assert.equal(registeredTool.parameters.properties.references.type, 'string');
+assert.equal(registeredTool.parameters.properties.path.type, 'string');
+assert.equal(registeredTool.parameters.properties.maxRefs.type, 'integer');
+
+const tmp = mkdtempSync(join(tmpdir(), 'dsh-reference-checker-smoke-'));
 
 // 鈹€鈹€ 1. minimal valid PDF with a References section 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
 function makePdf(lines) {
@@ -53,6 +63,9 @@ console.log('pages:', textResult.total);
 
 // 鈹€鈹€ 2. references-section detection + entry splitting 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
 const extracted = rc.extractReferences(textResult.text, 'pdf');
+assert.equal(textResult.total, 1);
+assert.equal(extracted.extraction, 'references-section');
+assert.equal(extracted.refs.length, 2);
 console.log('=== extracted references ===');
 console.log('extraction:', extracted.extraction);
 console.log('count:', extracted.refs.length);
@@ -71,6 +84,9 @@ const bib = `@article{vaswani2017,
   year={2099}
 }`;
 const bibRefs = rc.extractReferences(bib, 'bibtex');
+assert.equal(bibRefs.refs.length, 2);
+assert.equal(bibRefs.refs[0].title, 'Attention is all you need');
+assert.equal(bibRefs.refs[0].year, 2017);
 console.log('=== bibtex ===');
 console.log('extraction:', bibRefs.extraction, 'count:', bibRefs.refs.length);
 for (const r of bibRefs.refs) console.log('-', r.line.slice(0, 80), '| year:', r.year, '| firstAuthor:', r.firstAuthor);
@@ -83,6 +99,7 @@ Some body text here.
 \\bibitem{he2016} He, K. et al. (2016) Deep residual learning.
 \\end{thebibliography}`;
 const texRefs = rc.extractReferences(tex, 'tex');
+assert.equal(texRefs.refs.length, 2);
 console.log('=== tex ===');
 console.log('extraction:', texRefs.extraction, 'count:', texRefs.refs.length);
 for (const r of texRefs.refs) console.log('-', r.line.slice(0, 80));
@@ -97,6 +114,7 @@ const gbkText = 'Vaswani, A. et al. (2017) Attention is all you need.\nHe, K. et
 const gbkBuf2 = Buffer.from(gbkText, 'utf8'); // ascii is identical in GBK
 writeFileSync(`${tmp}/refs.txt`, gbkBuf2);
 const txtRefs = rc.extractReferences(rc.readTextSmart(`${tmp}/refs.txt`), 'text');
+assert.equal(txtRefs.refs.length, 2);
 console.log('=== txt ===');
 console.log('extraction:', txtRefs.extraction, 'count:', txtRefs.refs.length);
 for (const r of txtRefs.refs) console.log('-', r.line.slice(0, 80), '| year:', r.year, '| firstAuthor:', r.firstAuthor);

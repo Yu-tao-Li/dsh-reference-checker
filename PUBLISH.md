@@ -33,6 +33,15 @@
 
 ## 步骤留档
 
+### 1.1.1 补丁版本（2026-10-31）
+
+- 修复 [issue #1](https://github.com/Yu-tao-Li/dsh-reference-checker/issues/1) 的工具 schema、Vancouver 分条及题名提取问题。
+- 发布前运行 `npm ci`、`npm test`、`npm run test:e2e`，并在独立临时目录安装打包产物，检查 exports、bundle patch、版本与工具 schema。
+- 同一个 `dsh-reference-checker-1.1.1.tgz` 用于 npm 发布和 GitHub Release v1.1.1；Release 指向包含修复及测试的提交。
+- npm 发布账号使用 `npm whoami` 核实，包名已属于作者；不在文档中记录凭据。
+- 本地验证：21 项离线测试通过；在线 9 条引用得到 7 条 found、2 条 not_found，Crossref 有一次 429，其他源成功。DeepSeek v4 Flash 的真实请求接受修复后的 schema；该提供方也接受旧 schema，400 回归由结构断言覆盖。
+- `publish/awesome-list-entry.yml` 改用固定版本下载 URL，后续提交商城更新时使用。
+
 ### 第 1 步：推 GitHub（✅ 已完成 2026-08-17）
 
 - 仓库：<https://github.com/Yu-tao-Li/dsh-reference-checker>（public，创建时刻

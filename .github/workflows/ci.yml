@@ -6,17 +6,20 @@ on:
 
 jobs:
   smoke:
-    # The plugin is pure Node (no native deps, no OS-specific behavior), so
-    # the offline smoke test runs on the cheap Ubuntu runner. The online
-    # e2e (live Crossref/OpenAlex/arXiv lookups) is intentionally local-only:
+    # Offline schema, citation-parser and mocked lookup regressions plus PDF
+    # extraction run on Linux and Windows. The online e2e is local-only:
     # it depends on the public bibliographic APIs and their rate limits.
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: [22, 24]
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: ${{ matrix.node }}
 
       # pdf-parse is the single runtime dependency (PDF text extraction).
       - name: Install dependencies
@@ -24,6 +27,6 @@ jobs:
 
       # Offline: minimal PDF generation -> text extraction -> reference
       # section detection -> BibTeX/tex/plain parsing.
-      - name: Offline smoke test
-        run: node test-smoke.mjs
+      - name: Offline regression and smoke tests
+        run: npm test
         timeout-minutes: 5

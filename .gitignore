@@ -1,5 +1,6 @@
 # dependencies
 node_modules/
+.file-log.lock
 
 # local runtime artifacts
 *.log

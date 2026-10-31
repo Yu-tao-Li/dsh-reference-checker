@@ -28,6 +28,9 @@
 
 ## 安装
 
+npm 包：[dsh-reference-checker](https://www.npmjs.com/package/dsh-reference-checker)。
+预构建包见 [GitHub Releases](https://github.com/Yu-tao-Li/dsh-reference-checker/releases)。
+
 ```sh
 # 从 GitHub（--profile 指定装进哪个 profile）
 dsh plugin --profile web add github:Yu-tao-Li/dsh-reference-checker
@@ -93,18 +96,27 @@ reference_checker（模型工具，宿主进程内）
 ```
 lib/host.mjs                    全部本体：提取 + 核对 + 判定 + 样式模板（单文件 ESM）
 test-smoke.mjs                  离线：最小 PDF 生成 → 文本提取 → 四种来源解析
-test-e2e.mjs                    在线：8 行混合格式真实核对 + 样式/更正版回归断言
+test-regression.mjs             离线：工具 schema、Vancouver 分条/题名、模拟检索回归断言
+test-e2e.mjs                    在线：9 行混合格式真实核对 + 样式/更正版回归断言
 scripts/make-screenshot.ps1     重生成 README 示例截图（Windows PowerShell + GDI+）
 docs/dev-notes.md               设计原理、打分公式、踩坑记录、版本历史
 ```
 
 ```sh
 npm install          # 拉 pdf-parse
-node test-smoke.mjs  # 离线
+npm test            # 离线回归 + PDF 冒烟测试
 node test-e2e.mjs    # 在线（需要能访问三个数据源）
 ```
 
-CI（`.github/workflows/ci.yml`）在每次 push/PR 时于 `ubuntu-latest` 跑离线 smoke 测试；在线 e2e 仅本地运行（依赖公网书目 API）。
+CI（`.github/workflows/ci.yml`）在每次 push/PR 时于 Linux / Windows、Node 22 / 24 跑离线回归和 PDF 冒烟测试；在线 e2e 仅本地运行（依赖公网书目 API）。
+
+## 1.1.1 修复
+
+- 工具参数使用顶层 `type: object` JSON Schema，解决模型请求因 schema 无效返回 400 的问题。
+- 识别以逗号分隔年份和卷号的 Vancouver 引用，逐行粘贴时正确分条，跨行作者列表继续合并。
+- 提取题名前剥离 Vancouver 作者块，保留 `et al.`、`e.g.`、`Jr.`、`Fig.` 等缩写内的句点，避免拿作者列表查询文献。
+
+详见 [issue #1](https://github.com/Yu-tao-Li/dsh-reference-checker/issues/1)。
 
 ## 许可
 
