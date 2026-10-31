@@ -35,6 +35,7 @@
 
 ### 1.1.1 补丁版本（2026-10-31）
 
+- **已发布**：[npm 1.1.1](https://www.npmjs.com/package/dsh-reference-checker/v/1.1.1)（latest）与 [GitHub Release v1.1.1](https://github.com/Yu-tao-Li/dsh-reference-checker/releases/tag/v1.1.1)。Release 标签指向 `e7393554d2581b79c0dad07c1adb07614bda4ba0`；[四组 CI](https://github.com/Yu-tao-Li/dsh-reference-checker/actions/runs/41205089055) 全部通过。两处下载均已逐字节比较，与本地通过安装测试的 26,396 字节 tarball 相同；issue #1 已关闭。
 - 修复 [issue #1](https://github.com/Yu-tao-Li/dsh-reference-checker/issues/1) 的工具 schema、Vancouver 分条及题名提取问题。
 - 发布前运行 `npm ci`、`npm test`、`npm run test:e2e`，并在独立临时目录安装打包产物，检查 exports、bundle patch、版本与工具 schema。
 - 同一个 `dsh-reference-checker-1.1.1.tgz` 用于 npm 发布和 GitHub Release v1.1.1；Release 指向包含修复及测试的提交。
